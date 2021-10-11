@@ -3,7 +3,7 @@ package com.example.bookshop.model;
 import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import java.util.Date;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,15 +11,14 @@ import java.util.Date;
 @Setter
 @EntityScan
 @Data
+public class Review {
 
-public class Books {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long id;
-    private long isbn;
-    private String author;
-    private String title;
-    private Date releaseDate;
+    private String reviewText;
 
-
-
+    @ManyToOne
+    private Book book;
 }
